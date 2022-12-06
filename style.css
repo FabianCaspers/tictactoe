@@ -1,3 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Spielernamen designed */
+.player-panel {
+    display: flex;
+    font-size: 32px;
+}
+
+
+.player-panel img {
+    width: 60px;
+    height: 60px;
+    margin-right: 16px;
+}
+
+
+.player-panel div {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+}
+
+
+.player-inactiv {
+    opacity: 0.5;
+}
+
 /* Fügt die Border zusammen */
 table {
     border-collapse: collapse;  
@@ -60,3 +95,19 @@ table tr td:last-child {
 .d-none {
     display: none;
 }
+
+
+.horizontal-line {
+    height: 10px;
+    background-color: rgba(0,0,0,0.5);
+    width: 350px;
+    position: absolute;
+    transform: scaleX(0.0);
+    transition: transform 225ms ease-in-out;
+}
+
+
+.make-vertical {
+    transform: rotate(90deg) scaleX(0.0);
+}
+
