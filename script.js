@@ -1,10 +1,10 @@
 let fields = [];
-
+let gameOver = false;
 let currentShape = 'cross';
 
 // Zeigt Cross an, Wenn currentShape == Cross dann wird es zu circle, ansonsten wieder cross
 function fillShape(id) {
-    if (!fields[id]) {  /* !fields[id] sorgt dafür das NICHT beide img angezeigt werden */
+    if (!fields[id] && !gameOver) {  /* !fields[id] sorgt dafür das NICHT beide img angezeigt werden */
         if (currentShape == 'cross') {
             currentShape = 'circle';
             document.getElementById('player-1').classList.remove('player-inactiv'); /* Graut den jeweiligen Spieler aus, um zu sehen wer dran ist */
@@ -18,6 +18,23 @@ function fillShape(id) {
         fields[id] = currentShape;
         draw();
         checkForWin();
+    }
+}
+
+
+function restart() {
+    gameOver = false;
+    fields = [];
+    document.getElementById('game-over').classList.add('d-none');
+    document.getElementById('restart-btn').classList.add('d-none');
+
+    for (let i = 1; i < 8; i++) {
+        document.getElementById('line-' + i).classList.add('d-none');
+    }
+
+    for (let i = 0; i < 9; i++) {
+        document.getElementById('circle-' + i).classList.add('d-none');
+        document.getElementById('cross-' + i).classList.add('d-none');
     }
 }
 
@@ -93,5 +110,14 @@ function checkForWin() {
 
     if (winner) {
         console.log('GEWONNEN', winner);
+        gameOver = true;
+        setTimeout(function () {
+           
+        }, 1000);
+
     }
 }
+
+
+document.getElementById('game-over').classList.remove('d-none');
+document.getElementById('restart-btn').classList.remove('d-none');
